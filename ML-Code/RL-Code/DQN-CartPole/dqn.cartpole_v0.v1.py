@@ -127,15 +127,6 @@ class DQN_Model:
     
 
 
-# In[10]:
-
-
-# q_target = np.array([[1,2],[1,2],[1,2]])
-# batch_index = np.array([0,1,2])
-# eval_act = np.array([0,1,0])
-# q_target[batch_index, eval_act]
-
-
 # In[11]:
 
 
@@ -154,41 +145,6 @@ obs = env.reset()
 # In[13]:
 
 
-# step = 0
-# for times in range(10000):
-#     obs = env.reset()
-#     total_reward  = 0
-#     while True:
-#         env.render()
-#         action = model.choose_action(obs[None, :])
-        
-#         obs_, reward, terminal, _ = env.step(action)
-#         total_reward += reward
-
-#         if total_reward < 200:
-#             model.store_transition(obs, action, reward, obs_, terminal)
-#         else:
-#             print('Good Job!')
-        
-        
-        
-#         if (step > 1000) and (step % 3 == 0):
-#             model.learn()
-        
-#         obs = obs_
-        
-#         if terminal:
-#             env.render()
-#             # print(reward, terminal)
-#             break
-#         step += 1
-        
-#     print('Time: ', times, 'Gain_reward: ', total_reward, 'Steps: ', step)
-#     if times%200 == 199:
-#         model.evalNet.save_weights('./dqn.new.weights')
-
-print(model.evalNet.load_weights('./dqn.ori.weights'))
-model.epsilon = 0.99
 step = 0
 for times in range(10000):
     obs = env.reset()
@@ -198,12 +154,47 @@ for times in range(10000):
         action = model.choose_action(obs[None, :])
         
         obs_, reward, terminal, _ = env.step(action)
-
         total_reward += reward
 
+        if total_reward < 200:
+            model.store_transition(obs, action, reward, obs_, terminal)
+        else:
+            print('Good Job!')
+        
+        
+        
+        if (step > 1000) and (step % 3 == 0):
+            model.learn()
+        
+        obs = obs_
+        
         if terminal:
             env.render()
+            # print(reward, terminal)
             break
         step += 1
         
     print('Time: ', times, 'Gain_reward: ', total_reward, 'Steps: ', step)
+    if times%200 == 199:
+        model.evalNet.save_weights('./dqn.new.weights')
+
+# print(model.evalNet.load_weights('./dqn.ori.weights'))
+# model.epsilon = 0.99
+# step = 0
+# for times in range(10000):
+#     obs = env.reset()
+#     total_reward  = 0
+#     while True:
+#         env.render()
+#         action = model.choose_action(obs[None, :])
+        
+#         obs_, reward, terminal, _ = env.step(action)
+
+#         total_reward += reward
+
+#         if terminal:
+#             env.render()
+#             break
+#         step += 1
+        
+#     print('Time: ', times, 'Gain_reward: ', total_reward, 'Steps: ', step)
