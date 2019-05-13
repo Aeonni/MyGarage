@@ -1,0 +1,15 @@
+link: https://aeonni.com
+age: 21
+name: aeonni
+sex: m
+batch_size: 32
+lr: 0.003
+
+__PRASER_ARGS__:
+  age:
+  name:
+    short: True
+    help:
+      your name
+  lr:
+  flag: False
