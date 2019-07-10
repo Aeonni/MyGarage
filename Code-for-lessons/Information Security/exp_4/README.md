@@ -1,15 +1,6 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-tex2jax: {inlineMath: [['$','$'], ['\(','\)']]}
-});
-</script>
-
-
 # 信息安全技术实验报告 实验四
 
-### 16061334 --- 张子扬 --- 2019.04.28
+### 16061334 --- 张** --- 2019.04.28
 
 ----
 
